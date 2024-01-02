@@ -87,140 +87,71 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
+// Before submitting this, I did use console log to check that each step was correct, before deleting them
+
 
 // total number of months = count the number of entries in the array
-
-
 let totalMonths = 0
+totalMonths = finances.length
 
-let total = 0
-
+// Total money
+let totalMoney = 0
 for (let i = 0; i < finances.length; i++) {
   const arr = finances[i]
-  total += arr[1]
+  totalMoney += arr[1]
 }
 
-console.log(total);
-
-console.log(finances.length);
-
-
-for (let i = 0; i < finances.length; i++) {
-  let numbers = finances[i][1]
-console.log(numbers);
-}
-
-let arrOne = []
-let arrTwo = []
+// For the following bits, separating the array is useful
+let months = []
+let money = []
 finances.forEach((v) => {
-arrOne.push(v[0]);
-arrTwo.push(v[1]);
+months.push(v[0]);
+money.push(v[1]);
 });
 
-console.log(arrTwo);
-
+// calculate differences between each money element
 let diff = []
-
-for (let i = 0; i < arrTwo.length-1; i++) {
-  diff.push(arrTwo[i+1] - arrTwo[i])  
+for (let i = 0; i < money.length-1; i++) {
+  diff.push(money[i+1] - money[i])  
 }
-console.log(diff);
 
+// Total difference
 let totalDiff = 0
 
 for (let i = 0; i < diff.length; i++) {
   totalDiff += diff[i]
 }
-console.log(totalDiff);
 
-let avChange = totalDiff/(finances.length-1)
+// Total diff/months-1 = Average change
+let avChange = totalDiff/(totalMonths-1)
 let avChangeRounded = avChange.toFixed(2)
-console.log(avChangeRounded);
 
-
-
+// Find max increase in money between months
 let max = Math.max.apply(0,diff)
-console.log(max);
 
+// Find corresponding month index number in diff
+indexOfMaxDiff = diff.indexOf(max);
+
+// Convert to index number in original array (add 1), then isolate the month only
+indexOfMaxFin = diff.indexOf(max)+1;
+let maxProfitMonth = months[indexOfMaxFin];
+
+// In the same way, minimum profit month can be found
 let min = Math.min.apply(0,diff)
-console.log(min);
 
-for (let i = 0; i < diff.length; i++) {
-if (diff[i]>max){
-  let max = diff[i];
-}
-}
+// Find corresponding month index number in diff
+indexOfMinDiff = diff.indexOf(min);
 
-// * The greatest increase in Profit/Losses (date and difference in the amounts) over the entire period.
+// Convert to index number in original array (add 1), then isolate the month only
+indexOfMinFin = diff.indexOf(min)+1;
+let minProfitMonth = months[indexOfMinFin];
 
-// * The greatest decrease in Profit/Losses (date and difference in the amounts) over the entire period.
-
-// When you open your code in the browser your resulting analysis should look similar to the following:
-
-//   ```text
-//   Financial Analysis 
-//   ----------------
-//   Total Months: 86
-//   Total: $38382578
-//   Average Change: -2315.12
-//   Greatest Increase in Profits/Losses: Feb-2012 ($1926159)
-//   Greatest Decrease in Profits/Losses: Sep-2013 ($-2196167)
-//   ```
-
-// Your final code should print the analysis to the console.
-
-// **Hints:**
-
-// * You will need to do some research on your own for this project!
-
-// * Remember, in order to combine strings and variables in the console you will need to use **concatenation**.
-
-// * How do you only print to the nearest 100th in JavaScript?
-
-// ## Grading Requirements
-
-// This homework is graded based on the following criteria:
-
-// ### Technical Acceptance Criteria: 40%
-
-// * Satisfies all of the above acceptance criteria.
-
-// ### Deployment: 32%
-
-// * Application deployed at live URL.
-
-// * Application loads with no errors.
-
-// * Application GitHub URL submitted.
-
-// * GitHub repository contains application code.
-
-// ### Repository Quality: 23%
-
-// * Repository has a unique name.
-
-// * Repository follows best practices for file structure and naming conventions.
-
-// * Repository follows best practices for variable naming conventions, indentation, quality comments, etc.
-
-// * Repository contains multiple descriptive commit messages.
-
-// * Repository contains quality README file with description, screenshot, and link to deployed application.
-
-// ### Application Quality: 5%
-
-// * Application resembles the mock-up functionality provided in the Challenge instructions.
-
-// ## Review
-
-// You are required to submit BOTH of the following for review:
-
-// * The URL of the deployed application.
-
-// * The URL of the GitHub repository that contains your code. Give the repository a unique name and include a README file that describes the project.
-
-// ---
-
-// ## Copyright
-
-// © 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+// Finally, create one long log of the above information
+console.log("Financial Analysis"
++ "\n-----------------------"
++ "\nTotal Months: " + totalMonths
++ "\nTotal: $" + totalMoney
++ "\nAverage Change: " + avChangeRounded
++ "\nGreatest Increase in Profits/Losses: " + maxProfitMonth + " ($" + max + ")"
++ "\nGreatest Decrease in Profits/Losses: " + minProfitMonth + " ($" + min + ")"
+);
