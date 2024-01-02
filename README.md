@@ -9,6 +9,7 @@ This site has next to no functionality. It's merely to serve as a sandbox for pr
 
 ![Screenshot on How to access console](Howto.png)
 
+Link to site: https://sidm97.github.io/Console-Finances/
 
 ## Credits
 Credit goes to the Skills Bootcamp that taught me how to use rudimentary Javascript. In addition, Mozilla's MDN docs and StackOverflow were both very useful in answering my questions along the way.
