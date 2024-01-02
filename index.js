@@ -106,9 +106,28 @@ console.log(finances.length);
 
 
 for (let i = 0; i < finances.length; i++) {
-let numbers = finances[i][1]
-
+  let numbers = finances[i][1]
+console.log(numbers);
 }
+
+let arrOne = []
+let arrTwo = []
+finances.forEach((v) => {
+arrOne.push(v[0]);
+arrTwo.push(v[1]);
+});
+
+console.log(arrTwo);
+
+let diff = []
+
+for (let i = 0; i < arrTwo.length-1; i++) {
+  diff.push(arrTwo[i] - arrTwo[i+1])  
+}
+console.log(diff);
+
+
+
 // You have been given a dataset composed of arrays with two fields, Date and Profit/Losses.
 
 // Your task is to write JavaScript code that analyzes the records to calculate each of the following:
