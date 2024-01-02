@@ -122,23 +122,34 @@ console.log(arrTwo);
 let diff = []
 
 for (let i = 0; i < arrTwo.length-1; i++) {
-  diff.push(arrTwo[i] - arrTwo[i+1])  
+  diff.push(arrTwo[i+1] - arrTwo[i])  
 }
 console.log(diff);
 
+let totalDiff = 0
+
+for (let i = 0; i < diff.length; i++) {
+  totalDiff += diff[i]
+}
+console.log(totalDiff);
+
+let avChange = totalDiff/(finances.length-1)
+let avChangeRounded = avChange.toFixed(2)
+console.log(avChangeRounded);
 
 
-// You have been given a dataset composed of arrays with two fields, Date and Profit/Losses.
 
-// Your task is to write JavaScript code that analyzes the records to calculate each of the following:
+let max = Math.max.apply(0,diff)
+console.log(max);
 
-// * The total number of months included in the dataset.
+let min = Math.min.apply(0,diff)
+console.log(min);
 
-// * The net total amount of Profit/Losses over the entire period.
-
-// * The average of the **changes** in Profit/Losses over the entire period.
-//   * You will need to track what the total change in Profit/Losses are from month to month and then find the average.
-//   * (`Total/(Number of months - 1)`)
+for (let i = 0; i < diff.length; i++) {
+if (diff[i]>max){
+  let max = diff[i];
+}
+}
 
 // * The greatest increase in Profit/Losses (date and difference in the amounts) over the entire period.
 
